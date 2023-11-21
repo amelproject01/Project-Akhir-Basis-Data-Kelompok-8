@@ -1,0 +1,37 @@
+CREATE TABLE NOTA (
+no_nota VARCHAR(5) NOT NULL PRIMARY KEY,
+tanggal_masuk VARCHAR(10) NOT NULL,
+tanggal_keluar VARCHAR(10) NOT NULL,
+jenis_sepeda VARCHAR(50) NOT NULL,
+nomor_polisi VARCHAR(10) NOT NULL,
+nama_pelanggan VARCHAR(50) NOT NULL,
+nama_toko VARCHAR(100) NOT NULL,
+nama_pegawai VARCHAR(50) NOT NULL,
+total VARCHAR(50) NOT NULL,
+)
+
+CREATE TABLE PELANGGAN (
+nama_pelanggan VARCHAR(100) NOT NULL,
+telepon_pelanggan VARCHAR(15) NOT NULL,
+)
+
+CREATE TABLE TOKO (
+nama_toko VARCHAR(100) NOT NULL,
+alamat_toko VARCHAR(100) NOT NULL,
+telepon_toko VARCHAR(15) NOT NULL
+)
+
+CREATE TABLE KODE_BARANG (
+kode_barang VARCHAR(5) NOT NULL PRIMARY KEY,
+nama_barang VARCHAR(50) NOT NULL,
+jumlah_barang VARCHAR(10) NOT NULL,
+harga_satuan VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE TRANSAKSI (
+no_nota VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES NOTA (no_nota),
+kode_barang VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES KODE_BARANG (kode_barang),
+nama_barang VARCHAR(50) NOT NULL,
+jumlah_barang VARCHAR(10) NOT NULL,
+subtotal VARCHAR(50) NOT NULL
+)
