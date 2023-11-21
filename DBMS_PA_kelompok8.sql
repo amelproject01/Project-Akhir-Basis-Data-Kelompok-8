@@ -1,5 +1,5 @@
 CREATE TABLE NOTA (
-no_nota VARCHAR(5) NOT NULL PRIMARY KEY,
+no_nota VARCHAR(10) NOT NULL PRIMARY KEY,
 tanggal_masuk VARCHAR(10) NOT NULL,
 tanggal_keluar VARCHAR(10) NOT NULL,
 jenis_sepeda VARCHAR(50) NOT NULL,
@@ -7,34 +7,33 @@ nomor_polisi VARCHAR(10) NOT NULL,
 nama_pelanggan VARCHAR(50) NOT NULL,
 nama_toko VARCHAR(100) NOT NULL,
 nama_pegawai VARCHAR(50) NOT NULL,
-total VARCHAR(50) NOT NULL,
-)
+total VARCHAR(50) NOT NULL
+);
 
 CREATE TABLE PELANGGAN (
 nama_pelanggan VARCHAR(100) NOT NULL,
-telepon_pelanggan VARCHAR(15) NOT NULL,
-)
+telepon_pelanggan VARCHAR(15) NOT NULL
+);
 
 CREATE TABLE TOKO (
 nama_toko VARCHAR(100) NOT NULL,
 alamat_toko VARCHAR(100) NOT NULL,
 telepon_toko VARCHAR(15) NOT NULL
-)
+);
 
 CREATE TABLE KODE_BARANG (
 kode_barang VARCHAR(5) NOT NULL PRIMARY KEY,
 nama_barang VARCHAR(50) NOT NULL,
-jumlah_barang VARCHAR(10) NOT NULL,
 harga_satuan VARCHAR(50) NOT NULL
-)
+);
 
 CREATE TABLE TRANSAKSI (
-no_nota VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES NOTA (no_nota),
+no_nota VARCHAR(10) NOT NULL FOREIGN KEY REFERENCES NOTA (no_nota),
 kode_barang VARCHAR(5) NOT NULL FOREIGN KEY REFERENCES KODE_BARANG (kode_barang),
 nama_barang VARCHAR(50) NOT NULL,
 jumlah_barang VARCHAR(10) NOT NULL,
 subtotal VARCHAR(50) NOT NULL
-)
+);
 
 INSERT INTO NOTA (no_nota, tanggal_masuk, tanggal_keluar, jenis_sepeda, nomor_polisi,
 nama_pelanggan, nama_toko, nama_pegawai, total) VALUES
@@ -161,39 +160,14 @@ INSERT INTO PELANGGAN (nama_pelanggan, telepon_pelanggan) VALUES
 ('Sisi', '081234567919');
 
 INSERT INTO TOKO (nama_toko,alamat_toko,telepon_toko) VALUES
-('Gayang Maren Spesialis Servis Sepeda Motor', 'Jalan Candi Panggung Barat No. 1 Malang', '0852723334021')
+('Gayang Maren Spesialis Servis Sepeda Motor', 'Jalan Candi Panggung Barat No. 1 Malang', '0852723334021');
 
-INSERT INTO KODE_BARANG (kode_barang, nama_barang, jumlah_barang, harga_satuan) VALUES
-('K01', 'Kabel Rem', 1, 11000),
-('L05', 'Lampu Sepeda', 2, 14000),
-('B08', 'Bel Sepeda', 1, 6000),
-('K02', 'Kabel Gigi', 3, 4000),
-('K09', 'Kopling Sepeda', 1, 400000),
-('K01', 'Kabel Rem', 2, 11000),
-('L05', 'Lampu Sepeda', 2, 14000),
-('B08', 'Bel Sepeda', 1, 6000),
-('K02', 'Kabel Gigi', 2, 4000),
-('K09', 'Kopling Sepeda', 1, 400000),
-('K01', 'Kabel Rem', 2, 11000),
-('L05', 'Lampu Sepeda', 4, 14000),
-('B08', 'Bel Sepeda', 1, 6000),
-('K02', 'Kabel Gigi', 2, 4000),
-('K09', 'Kopling Sepeda', 1, 400000),
-('K01', 'Kabel Rem', 2, 11000),
-('L05', 'Lampu Sepeda', 2, 14000),
-('B08', 'Bel Sepeda', 1, 6000),
-('K02', 'Kabel Gigi', 1, 4000),
-('K09', 'Kopling Sepeda', 1, 400000),
-('K01', 'Kabel Rem', 1, 11000),
-('L05', 'Lampu Sepeda', 2, 14000),
-('B08', 'Bel Sepeda', 1, 6000),
-('K02', 'Kabel Gigi', 1, 4000),
-('K09', 'Kopling Sepeda', 1, 400000),
-('K01', 'Kabel Rem', 1, 11000),
-('L05', 'Lampu Sepeda', 1, 14000),
-('B08', 'Bel Sepeda', 1, 6000),
-('K02', 'Kabel Gigi', 1, 4000),
-('K09', 'Kopling Sepeda', 1, 400000),
+INSERT INTO KODE_BARANG (kode_barang, nama_barang, harga_satuan) VALUES
+('K01', 'Kabel Rem', 11000),
+('L05', 'Lampu Sepeda', 14000),
+('B08', 'Bel Sepeda', 6000),
+('K02', 'Kabel Gigi', 4000),
+('K09', 'Kopling Sepeda', 400000);
 
 INSERT INTO TRANSAKSI (no_nota, kode_barang, nama_barang, jumlah_barang, subtotal) VALUES
 ('NOTA-001', 'K01', 'Kabel Rem', 1, 11000),
